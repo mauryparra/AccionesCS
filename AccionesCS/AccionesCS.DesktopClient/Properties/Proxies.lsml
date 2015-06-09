@@ -22,4 +22,10 @@
         Target="ServiceInterface:Escuelas" />
     </EntityType.Attributes>
   </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Equipos" />
+    </EntityType.Attributes>
+  </EntityType>
 </Application>
