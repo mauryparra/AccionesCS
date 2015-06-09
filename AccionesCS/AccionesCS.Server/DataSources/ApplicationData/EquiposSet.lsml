@@ -49,6 +49,16 @@
             Value="1" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="EscuelasCollection"
+        Association="Equipos_Escuelas"
+        FromEnd="Equipos"
+        ToEnd="Escuelas" />
+      <NavigationProperty
+        Name="ProfesionalesCollection"
+        Association="Profesionales_Equipos"
+        FromEnd="Equipos"
+        ToEnd="Profesionales" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -192,5 +202,105 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="Equipos_EscuelasSet"
+      Association="Equipos_Escuelas">
+      <AssociationSetEnd
+        Name="Equipos"
+        EntitySet="EquiposSet" />
+      <AssociationSetEnd
+        Name="Escuelas"
+        EntitySet="EscuelasSet" />
+    </AssociationSet>
+    <AssociationSet
+      Name="Profesionales_EquiposSet"
+      Association="Profesionales_Equipos">
+      <AssociationSetEnd
+        Name="Profesionales"
+        EntitySet="ProfesionalesSet" />
+      <AssociationSetEnd
+        Name="Equipos"
+        EntitySet="EquiposSet" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="Equipos_Escuelas">
+    <AssociationEnd
+      Name="Equipos"
+      Multiplicity="One"
+      EntityType="Equipos">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+    <AssociationEnd
+      Name="Escuelas"
+      Multiplicity="Many"
+      EntityType="Escuelas" />
+  </Association>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <AssociationSetMapping
+      AssociationSet="Equipos_EscuelasSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Equipos_EscuelasSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Equipos_EscuelasSet]/Members[Equipos]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Equipos_EscuelasSet]/Members[Escuelas]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Equipos_Escuelas" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="Profesionales_EquiposSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="Profesionales_EquiposSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Profesionales_EquiposSet]/Members[Profesionales]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Profesionales_Equipos" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[Profesionales_EquiposSet]/Members[Equipos]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
+  <Association
+    Name="Profesionales_Equipos">
+    <AssociationEnd
+      Name="Profesionales"
+      Multiplicity="Many"
+      EntityType="Profesionales" />
+    <AssociationEnd
+      Name="Equipos"
+      Multiplicity="One"
+      EntityType="Equipos">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
 </ServiceApplication>

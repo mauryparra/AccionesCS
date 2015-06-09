@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="Escuelas">
+    Name="PPAT">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,58 +27,94 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="NombreAbrev"
+        Name="Fecha"
+        PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Name="NivelAccion"
+        Association="PPAT_NivelAccion"
+        FromEnd="PPAT"
+        ToEnd="NivelAccion" />
+      <NavigationProperty
+        Name="TipoAccion"
+        Association="PPAT_TipoAccion"
+        FromEnd="PPAT"
+        ToEnd="TipoAccion" />
+      <EntityProperty
+        Name="Descripcion"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
           <MaxLength
-            Value="10" />
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Nombre"
+        Name="Turno"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <SupportedValue
+            DisplayName="M"
+            Value="0" />
+          <SupportedValue
+            DisplayName="T"
+            Value="1" />
+          <SupportedValue
+            DisplayName="M/T"
+            Value="2" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Grado"
         PropertyType=":String?">
         <EntityProperty.Attributes>
           <MaxLength
-            Value="40" />
+            Value="6" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="ZonaSanitaria"
+        Name="Destinatario"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <SupportedValue
+            DisplayName="Alumnos"
+            Value="0" />
+          <SupportedValue
+            DisplayName="Docentes"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Directivos"
+            Value="2" />
+          <SupportedValue
+            DisplayName="Familiar"
+            Value="3" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="CantidadDest"
         PropertyType=":Int32">
         <EntityProperty.Attributes>
           <Required />
           <NotSearchable />
-          <SupportedValue
-            DisplayName="1"
-            Value="1" />
-          <SupportedValue
-            DisplayName="2"
-            Value="2" />
-          <SupportedValue
-            DisplayName="3"
-            Value="3" />
-          <SupportedValue
-            DisplayName="4"
-            Value="4" />
-          <SupportedValue
-            DisplayName="5"
-            Value="5" />
-          <SupportedValue
-            DisplayName="6"
-            Value="6" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="Equipos"
-        Association="Equipos_Escuelas"
-        FromEnd="Escuelas"
-        ToEnd="Equipos" />
+        Name="ProfeAccionesCollection"
+        Association="ProfeAcciones_PPAT"
+        FromEnd="PPAT"
+        ToEnd="ProfeAcciones" />
       <NavigationProperty
-        Name="PPATCollection"
+        Name="Escuelas"
         Association="Escuelas_PPAT"
-        FromEnd="Escuelas"
-        ToEnd="PPAT" />
+        FromEnd="PPAT"
+        ToEnd="Escuelas" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -137,14 +173,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="EscuelasSet"
+      Name="PPATSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Escuelas" />
+      EntityType="PPAT" />
     <QueryOperation
-      Name="EscuelasSet_Single"
-      ReturnType="Escuelas">
+      Name="PPATSet_Single"
+      ReturnType="PPAT">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -170,7 +206,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="EscuelasSet" />
+            Member="PPATSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -183,8 +219,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="EscuelasSet_SingleOrDefault"
-      ReturnType="Escuelas">
+      Name="PPATSet_SingleOrDefault"
+      ReturnType="PPAT">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -210,7 +246,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="EscuelasSet" />
+            Member="PPATSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -223,11 +259,11 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Name="Escuelas_PPATSet"
-      Association="Escuelas_PPAT">
+      Name="ProfeAcciones_PPATSet"
+      Association="ProfeAcciones_PPAT">
       <AssociationSetEnd
-        Name="Escuelas"
-        EntitySet="EscuelasSet" />
+        Name="ProfeAcciones"
+        EntitySet="ProfeAccionesSet" />
       <AssociationSetEnd
         Name="PPAT"
         EntitySet="PPATSet" />
@@ -239,50 +275,58 @@
       <Partial />
     </DataService.Attributes>
     <EntitySetMapping
-      EntitySet="EscuelasSet">
+      EntitySet="PPATSet">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
-          Name="Equipos_Escuelas"
+          Name="PPAT_NivelAccion"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="PPAT_TipoAccion"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="Escuelas_PPAT"
           Nullable="False"
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping
-      AssociationSet="Escuelas_PPATSet">
+      AssociationSet="ProfeAcciones_PPATSet">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
-          Name="Escuelas_PPATSet" />
+          Name="ProfeAcciones_PPATSet" />
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Escuelas_PPATSet]/Members[Escuelas]">
+          End="ApplicationData/Members[ProfeAcciones_PPATSet]/Members[ProfeAcciones]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="Id" />
+              Name="ProfeAcciones_PPAT" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Escuelas_PPATSet]/Members[PPAT]">
+          End="ApplicationData/Members[ProfeAcciones_PPATSet]/Members[PPAT]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="Escuelas_PPAT" />
+              Name="Id" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
   </DataService>
   <Association
-    Name="Escuelas_PPAT">
+    Name="ProfeAcciones_PPAT">
     <AssociationEnd
-      Name="Escuelas"
+      Name="ProfeAcciones"
+      Multiplicity="Many"
+      EntityType="ProfeAcciones" />
+    <AssociationEnd
+      Name="PPAT"
       Multiplicity="One"
-      EntityType="Escuelas">
+      EntityType="PPAT">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
-    <AssociationEnd
-      Name="PPAT"
-      Multiplicity="Many"
-      EntityType="PPAT" />
   </Association>
 </ServiceApplication>

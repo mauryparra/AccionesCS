@@ -204,6 +204,10 @@
     <LightSwitchModel Include="DataSources\ApplicationData\ProfesionalesSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\EscuelasSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\EquiposSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\PPATSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\NivelAccionSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\TipoAccionSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\ProfeAccionesSet.lsml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

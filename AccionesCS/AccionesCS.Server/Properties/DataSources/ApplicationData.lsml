@@ -17,5 +17,10 @@
   </EntityContainer>
   <DataService
     Name="ApplicationDataMapping"
-    EntityContainer="ApplicationData" />
+    EntityContainer="ApplicationData">
+    <DataService.Attributes>
+      <Partial
+        IsPrimary="True" />
+    </DataService.Attributes>
+  </DataService>
 </ServiceApplication>

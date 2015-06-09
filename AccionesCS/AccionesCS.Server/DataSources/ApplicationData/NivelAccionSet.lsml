@@ -5,7 +5,7 @@
     <Partial />
   </ServiceApplication.Attributes>
   <EntityType
-    Name="Escuelas">
+    Name="NivelAccion">
     <EntityType.Attributes>
       <CreatedModifiedPropertiesEnabled />
     </EntityType.Attributes>
@@ -27,57 +27,23 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
-        Name="NombreAbrev"
+        Name="Nombre"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
           <MaxLength
-            Value="10" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Nombre"
-        PropertyType=":String?">
-        <EntityProperty.Attributes>
-          <MaxLength
-            Value="40" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="ZonaSanitaria"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-          <SupportedValue
-            DisplayName="1"
-            Value="1" />
-          <SupportedValue
-            DisplayName="2"
-            Value="2" />
-          <SupportedValue
-            DisplayName="3"
-            Value="3" />
-          <SupportedValue
-            DisplayName="4"
-            Value="4" />
-          <SupportedValue
-            DisplayName="5"
-            Value="5" />
-          <SupportedValue
-            DisplayName="6"
-            Value="6" />
+            Value="20" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Name="Equipos"
-        Association="Equipos_Escuelas"
-        FromEnd="Escuelas"
-        ToEnd="Equipos" />
+        Name="TipoAccionCollection"
+        Association="TipoAccion_NivelAccion"
+        FromEnd="NivelAccion"
+        ToEnd="TipoAccion" />
       <NavigationProperty
         Name="PPATCollection"
-        Association="Escuelas_PPAT"
-        FromEnd="Escuelas"
+        Association="PPAT_NivelAccion"
+        FromEnd="NivelAccion"
         ToEnd="PPAT" />
       <EntityProperty
         Name="CreatedBy"
@@ -137,14 +103,14 @@
       <Partial />
     </EntityContainer.Attributes>
     <EntitySet
-      Name="EscuelasSet"
+      Name="NivelAccionSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Escuelas" />
+      EntityType="NivelAccion" />
     <QueryOperation
-      Name="EscuelasSet_Single"
-      ReturnType="Escuelas">
+      Name="NivelAccionSet_Single"
+      ReturnType="NivelAccion">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -170,7 +136,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="EscuelasSet" />
+            Member="NivelAccionSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -183,8 +149,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="EscuelasSet_SingleOrDefault"
-      ReturnType="Escuelas">
+      Name="NivelAccionSet_SingleOrDefault"
+      ReturnType="NivelAccion">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -210,7 +176,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="EscuelasSet" />
+            Member="NivelAccionSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -223,66 +189,104 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Name="Escuelas_PPATSet"
-      Association="Escuelas_PPAT">
+      Name="TipoAccion_NivelAccionSet"
+      Association="TipoAccion_NivelAccion">
       <AssociationSetEnd
-        Name="Escuelas"
-        EntitySet="EscuelasSet" />
+        Name="TipoAccion"
+        EntitySet="TipoAccionSet" />
+      <AssociationSetEnd
+        Name="NivelAccion"
+        EntitySet="NivelAccionSet" />
+    </AssociationSet>
+    <AssociationSet
+      Name="PPAT_NivelAccionSet"
+      Association="PPAT_NivelAccion">
       <AssociationSetEnd
         Name="PPAT"
         EntitySet="PPATSet" />
+      <AssociationSetEnd
+        Name="NivelAccion"
+        EntitySet="NivelAccionSet" />
     </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="TipoAccion_NivelAccion">
+    <AssociationEnd
+      Name="TipoAccion"
+      Multiplicity="Many"
+      EntityType="TipoAccion" />
+    <AssociationEnd
+      Name="NivelAccion"
+      Multiplicity="One"
+      EntityType="NivelAccion">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
   <DataService
     Name="ApplicationDataMapping">
     <DataService.Attributes>
       <Partial />
     </DataService.Attributes>
-    <EntitySetMapping
-      EntitySet="EscuelasSet">
-      <EntitySetMapping.Attributes>
-        <SsdlForeignKeyProperty
-          Name="Equipos_Escuelas"
-          Nullable="False"
-          Type="int" />
-      </EntitySetMapping.Attributes>
-    </EntitySetMapping>
     <AssociationSetMapping
-      AssociationSet="Escuelas_PPATSet">
+      AssociationSet="TipoAccion_NivelAccionSet">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
-          Name="Escuelas_PPATSet" />
+          Name="TipoAccion_NivelAccionSet" />
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Escuelas_PPATSet]/Members[Escuelas]">
+          End="ApplicationData/Members[TipoAccion_NivelAccionSet]/Members[TipoAccion]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="TipoAccion_NivelAccion" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[TipoAccion_NivelAccionSet]/Members[NivelAccion]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="Id" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="PPAT_NivelAccionSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="PPAT_NivelAccionSet" />
         <SsdlAssociationSetEnd
-          End="ApplicationData/Members[Escuelas_PPATSet]/Members[PPAT]">
+          End="ApplicationData/Members[PPAT_NivelAccionSet]/Members[PPAT]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
-              Name="Escuelas_PPAT" />
+              Name="PPAT_NivelAccion" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[PPAT_NivelAccionSet]/Members[NivelAccion]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
   </DataService>
   <Association
-    Name="Escuelas_PPAT">
+    Name="PPAT_NivelAccion">
     <AssociationEnd
-      Name="Escuelas"
+      Name="PPAT"
+      Multiplicity="Many"
+      EntityType="PPAT" />
+    <AssociationEnd
+      Name="NivelAccion"
       Multiplicity="One"
-      EntityType="Escuelas">
+      EntityType="NivelAccion">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
-    <AssociationEnd
-      Name="PPAT"
-      Multiplicity="Many"
-      EntityType="PPAT" />
   </Association>
 </ServiceApplication>

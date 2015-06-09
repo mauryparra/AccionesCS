@@ -52,6 +52,16 @@
             Value="30" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Name="ProfeAccionesCollection"
+        Association="ProfeAcciones_Profesionales"
+        FromEnd="Profesionales"
+        ToEnd="ProfeAcciones" />
+      <NavigationProperty
+        Name="Equipos"
+        Association="Profesionales_Equipos"
+        FromEnd="Profesionales"
+        ToEnd="Equipos" />
       <EntityProperty
         Name="CreatedBy"
         IsReadOnly="True"
@@ -195,5 +205,67 @@
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
     </QueryOperation>
+    <AssociationSet
+      Name="ProfeAcciones_ProfesionalesSet"
+      Association="ProfeAcciones_Profesionales">
+      <AssociationSetEnd
+        Name="ProfeAcciones"
+        EntitySet="ProfeAccionesSet" />
+      <AssociationSetEnd
+        Name="Profesionales"
+        EntitySet="ProfesionalesSet" />
+    </AssociationSet>
   </EntityContainer>
+  <Association
+    Name="ProfeAcciones_Profesionales">
+    <AssociationEnd
+      Name="ProfeAcciones"
+      Multiplicity="Many"
+      EntityType="ProfeAcciones" />
+    <AssociationEnd
+      Name="Profesionales"
+      Multiplicity="One"
+      EntityType="Profesionales">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <DataService
+    Name="ApplicationDataMapping">
+    <DataService.Attributes>
+      <Partial />
+    </DataService.Attributes>
+    <AssociationSetMapping
+      AssociationSet="ProfeAcciones_ProfesionalesSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="ProfeAcciones_ProfesionalesSet" />
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[ProfeAcciones_ProfesionalesSet]/Members[ProfeAcciones]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ProfeAcciones_Profesionales" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="ApplicationData/Members[ProfeAcciones_ProfesionalesSet]/Members[Profesionales]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="ProfesionalesSet">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="Profesionales_Equipos"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+  </DataService>
 </ServiceApplication>
