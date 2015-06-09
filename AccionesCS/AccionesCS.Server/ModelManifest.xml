@@ -4,5 +4,6 @@
     <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.Server\Properties\Service.lsml" Checksum="679C78F29C5AF23E9956A773B0E46DF90F7B86CADA0B79571E5896A1C79F5B70" />
     <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.Server\Properties\DataSources\ApplicationData.lsml" Checksum="986A4E2C3BC71E61B26C49DBB7451F9203AA85AB5825740AC6E35E7095E0722C" />
     <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.Server\DataSources\ApplicationData\ProfesionalesSet.lsml" Checksum="8DB5400810C78A2784E66566FA0D7F4662661E2FE755A59F606A5A66429C45B5" />
+    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.Server\DataSources\ApplicationData\EscuelasSet.lsml" Checksum="6E2FEA03CB16D0ED5961F087F8487E51ADE69FAB1077E8E16916F99ECF3A319D" />
   </Documents>
 </ModelDocumentManifest>

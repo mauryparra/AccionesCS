@@ -16,4 +16,10 @@
         Target="ServiceInterface:Profesionales" />
     </EntityType.Attributes>
   </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Escuelas" />
+    </EntityType.Attributes>
+  </EntityType>
 </Application>
