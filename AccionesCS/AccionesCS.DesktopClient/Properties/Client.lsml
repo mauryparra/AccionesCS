@@ -35,13 +35,34 @@
         Target="ServiceInterface:LightSwitchServiceApplicationGroup" />
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
+  <Application.Commands>
+    <ApplicationCommand
+      Name="ScreenCommandShowEquiposSetListDetail"
+      Target="!module/Methods[ShowEquiposSetListDetail]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowEscuelasSetListDetail"
+      Target="!module/Methods[ShowEscuelasSetListDetail]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowNivelAccionSetListDetail"
+      Target="!module/Methods[ShowNivelAccionSetListDetail]" />
+  </Application.Commands>
   <Application.NavigationItems>
     <ApplicationNavigationGroup
-      Name="Tasks">
+      Name="Tasks"
+      DefaultItem="!module/NavigationItems[Tasks]/Children[EscuelasSetListDetail]">
       <ApplicationNavigationGroup.Attributes>
         <DisplayName
           Value="Tasks" />
       </ApplicationNavigationGroup.Attributes>
+      <ApplicationNavigationLink
+        Name="EscuelasSetListDetail"
+        Command="!module/Commands[ScreenCommandShowEscuelasSetListDetail]" />
+      <ApplicationNavigationLink
+        Name="EquiposSetListDetail"
+        Command="!module/Commands[ScreenCommandShowEquiposSetListDetail]" />
+      <ApplicationNavigationLink
+        Name="NivelAccionSetListDetail"
+        Command="!module/Commands[ScreenCommandShowNivelAccionSetListDetail]" />
     </ApplicationNavigationGroup>
     <ApplicationNavigationGroup
       Name="Administration">

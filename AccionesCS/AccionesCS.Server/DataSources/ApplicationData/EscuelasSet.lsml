@@ -6,9 +6,6 @@
   </ServiceApplication.Attributes>
   <EntityType
     Name="Escuelas">
-    <EntityType.Attributes>
-      <CreatedModifiedPropertiesEnabled />
-    </EntityType.Attributes>
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -79,46 +76,6 @@
         Association="Escuelas_PPAT"
         FromEnd="Escuelas"
         ToEnd="PPAT" />
-      <EntityProperty
-        Name="CreatedBy"
-        IsReadOnly="True"
-        PropertyType=":Person?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Created"
-        IsReadOnly="True"
-        PropertyType=":DateTimeOffset?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="ModifiedBy"
-        IsReadOnly="True"
-        PropertyType=":Person?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Modified"
-        IsReadOnly="True"
-        PropertyType=":DateTimeOffset?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
       <EntityProperty
         Name="RowVersion"
         PropertyType=":RowVersion">

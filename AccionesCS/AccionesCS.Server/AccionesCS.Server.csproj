@@ -15,8 +15,8 @@
     <AssemblyName>Application.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <LightSwitchVersion>v4.5</LightSwitchVersion>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <SupportedCultures>en-US</SupportedCultures>
+    <DefaultLanguage>es</DefaultLanguage>
+    <SupportedCultures>es</SupportedCultures>
     <FileAlignment>512</FileAlignment>
     <IgnoreDeployManagedRuntimeVersion>True</IgnoreDeployManagedRuntimeVersion>
     <UseDeclareParametersXMLInMsDeploy>False</UseDeclareParametersXMLInMsDeploy>

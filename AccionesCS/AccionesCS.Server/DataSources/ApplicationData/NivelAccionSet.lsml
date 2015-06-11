@@ -6,9 +6,6 @@
   </ServiceApplication.Attributes>
   <EntityType
     Name="NivelAccion">
-    <EntityType.Attributes>
-      <CreatedModifiedPropertiesEnabled />
-    </EntityType.Attributes>
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -27,12 +24,21 @@
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
+        Name="Abrev"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="15" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
         Name="Nombre"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
           <MaxLength
-            Value="20" />
+            Value="40" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
@@ -45,46 +51,6 @@
         Association="PPAT_NivelAccion"
         FromEnd="NivelAccion"
         ToEnd="PPAT" />
-      <EntityProperty
-        Name="CreatedBy"
-        IsReadOnly="True"
-        PropertyType=":Person?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Created"
-        IsReadOnly="True"
-        PropertyType=":DateTimeOffset?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="ModifiedBy"
-        IsReadOnly="True"
-        PropertyType=":Person?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-          <MaxLength
-            Value="255" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Modified"
-        IsReadOnly="True"
-        PropertyType=":DateTimeOffset?">
-        <EntityProperty.Attributes>
-          <Generated />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
       <EntityProperty
         Name="RowVersion"
         PropertyType=":RowVersion">

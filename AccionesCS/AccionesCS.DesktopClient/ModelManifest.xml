@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <ModelDocumentManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Documents>
-    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Properties\Client.lsml" Checksum="1713E68D01BFC8A24D6E4283061AFA829BF107E762B9975921D2489053204F3C" />
+    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Properties\Client.lsml" Checksum="DEC73B52D83B5DF5992352C1D95C1D083B4A187BA5728236F58C7D9BADCC53AA" />
     <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Properties\Proxies.lsml" Checksum="F3A18C5F1CC0FC2C3BFF958C260D29DA12CE744763C35C33268D2FF27B8474BF" />
+    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Screens\EquiposSetListDetail.lsml" Checksum="B38D59A546B684B628AA9E3C74B47CF25CABFF4C6BB4E6F725E3A46E5A49A757" />
+    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Screens\EscuelasSetListDetail.lsml" Checksum="DA66320A060C6B032A9221316C65F02E3094D8A89432FF56925CE44B0D0C1F66" />
+    <Document FullPath="D:\Usuarios\pc\Documents\GitHub\AccionesCS\AccionesCS\AccionesCS.DesktopClient\Screens\NivelAccionSetListDetail.lsml" Checksum="700A4DA44710DD93FAE943AA7584339E9119C540E8D18F90FA6E581D6781B667" />
   </Documents>
 </ModelDocumentManifest>
