@@ -432,8 +432,7 @@
                 <ContentItem
                   Name="Profesionales"
                   Kind="Details"
-                  DataType="Profesionales"
-                  View="Microsoft.LightSwitch.RichClient:DetailsAutoCompleteBox">
+                  DataType="Profesionales">
                   <ContentItem.Attributes>
                     <DisplayName
                       Value="Profesional" />
@@ -450,7 +449,7 @@
                     Name="ProfesionalesTemplate"
                     Kind="Details"
                     DataType="Profesionales"
-                    View="Microsoft.LightSwitch.RichClient:ModalWindow">
+                    View="Microsoft.LightSwitch.RichClient:Summary">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
