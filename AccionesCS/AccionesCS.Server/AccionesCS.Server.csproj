@@ -208,6 +208,15 @@
     <LightSwitchModel Include="DataSources\ApplicationData\NivelAccionSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\TipoAccionSet.lsml" />
     <LightSwitchModel Include="DataSources\ApplicationData\ProfeAccionesSet.lsml" />
+    <LightSwitchModel Include="DataSources\ApplicationData\ProfesionalesPorEquipo.lsml">
+      <DependentUpon>ProfesionalesSet.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\ApplicationData\TipoAccionPorNivel.lsml">
+      <DependentUpon>TipoAccionSet.lsml</DependentUpon>
+    </LightSwitchModel>
+    <LightSwitchModel Include="DataSources\ApplicationData\Nivel1y2.lsml">
+      <DependentUpon>NivelAccionSet.lsml</DependentUpon>
+    </LightSwitchModel>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
